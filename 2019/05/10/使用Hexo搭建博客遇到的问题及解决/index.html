@@ -10,20 +10,19 @@
   
   
   
-  <meta name="description" content="###问题">
+  <meta name="description" content="问题1.添加gitment遇到Not Found问题注意自己的id和secret字段不要写错，还有repo和owner正确填写，确保repo的那个仓库是属于owner,repo不要.git后缀和前面部分，只写你仓库的名字就行。我的设置供参考(主题的.config.yml部分)1234567#Gitmentgitment:  enable: true  owner: 413749123  repo:">
 <meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Hexo搭建博客遇到的问题及解决">
 <meta property="og:url" content="http://yoursite.com/2019/05/10/使用Hexo搭建博客遇到的问题及解决/index.html">
 <meta property="og:site_name" content="飞萤乱入帘的小站">
-<meta property="og:description" content="###问题">
+<meta property="og:description" content="问题1.添加gitment遇到Not Found问题注意自己的id和secret字段不要写错，还有repo和owner正确填写，确保repo的那个仓库是属于owner,repo不要.git后缀和前面部分，只写你仓库的名字就行。我的设置供参考(主题的.config.yml部分)1234567#Gitmentgitment:  enable: true  owner: 413749123  repo:">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/05/10/使用Hexo搭建博客遇到的问题及解决/三叶.png">
-<meta property="og:image" content="http://yoursite.com/2019/05/10/使用Hexo搭建博客遇到的问题及解决/三叶.png">
-<meta property="og:updated_time" content="2019-05-10T09:34:01.941Z">
+<meta property="og:updated_time" content="2019-05-10T10:08:11.562Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hexo搭建博客遇到的问题及解决">
-<meta name="twitter:description" content="###问题">
+<meta name="twitter:description" content="问题1.添加gitment遇到Not Found问题注意自己的id和secret字段不要写错，还有repo和owner正确填写，确保repo的那个仓库是属于owner,repo不要.git后缀和前面部分，只写你仓库的名字就行。我的设置供参考(主题的.config.yml部分)1234567#Gitmentgitment:  enable: true  owner: 413749123  repo:">
 <meta name="twitter:image" content="http://yoursite.com/2019/05/10/使用Hexo搭建博客遇到的问题及解决/三叶.png">
   
     <link rel="alternate" href="/atom.xml" title="飞萤乱入帘的小站" type="application/atom+xml">
@@ -96,7 +95,21 @@
     
     <div class="article-content article-content-mac" itemprop="articleBody">
       
-        <p>###问题<br><img src="/2019/05/10/使用Hexo搭建博客遇到的问题及解决/三叶.png" alt="三叶" title="三叶"><br><img src="/2019/05/10/使用Hexo搭建博客遇到的问题及解决/三叶.png" width="400" height="200" alt="三叶" align="center"></p>
+        <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><h4 id="1-添加gitment遇到Not-Found问题"><a href="#1-添加gitment遇到Not-Found问题" class="headerlink" title="1.添加gitment遇到Not Found问题"></a>1.添加gitment遇到Not Found问题</h4><p>注意自己的id和secret字段不要写错，还有repo和owner正确填写，确保repo的那个仓库是属于owner,repo不要.git后缀和前面部分，只写你仓库的名字就行。<br>我的设置供参考(主题的.config.yml部分)<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" data-rel="YML"><figure class="iseeu highlight /yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Gitment</span></span><br><span class="line"><span class="attr">gitment:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  owner:</span> <span class="number">413749123</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="number">413749123.</span><span class="string">github.io</span></span><br><span class="line"><span class="attr">  client_id:</span> <span class="string">your_client_id</span></span><br><span class="line"><span class="attr">  client_secret:</span> <span class="string">your_secret</span></span><br></pre></td></tr></table></figure></div></p>
+<p>设置好后，重新<code>hexo g</code>和<code>hexo d</code>进行部署，刷新浏览器缓存后再打开网站。一般就不会报错not found了，如果发现评论栏不见了，那可能是你修改的配置文件有问题，浏览器按F12应该有报错，点进去就会看见哪个地方有问题，再进行改正。</p>
+<p><strong> 注意:解决gitment部分的问题时，一定记得刷新浏览器缓存，不然可能一直not found。 </strong></p>
+<h4 id="2-添加gitment遇到Login一直转圈，登录不上"><a href="#2-添加gitment遇到Login一直转圈，登录不上" class="headerlink" title="2.添加gitment遇到Login一直转圈，登录不上"></a>2.添加gitment遇到Login一直转圈，登录不上</h4><p>我找了半天答案，终于解决了，直接放链接吧<br><a href="https://cloud.tencent.com/developer/news/316368" title="解决Login一直转圈，登录不上" target="_blank" rel="noopener">点这里</a></p>
+<h4 id="3-添加gitment遇到Comments-Not-Initialized"><a href="#3-添加gitment遇到Comments-Not-Initialized" class="headerlink" title="3.添加gitment遇到Comments Not Initialized"></a>3.添加gitment遇到Comments Not Initialized</h4><p>报错是评论未初始化：</p>
+<ul>
+<li><p>原因1:是你没有在该页面登录github账号，登录之后如果是之前设置的owner，就可以初始化评论。</p>
+</li>
+<li><p>原因2:在注册OAuth Application这个步骤中，给Authorization callback URL指定的地址错了</p>
+</li>
+</ul>
+<h4 id="4-添加gitment遇到validation-failed"><a href="#4-添加gitment遇到validation-failed" class="headerlink" title="4.添加gitment遇到validation failed"></a>4.添加gitment遇到validation failed</h4><p>这个问题很简单，创建issues的标题超过限制了，因为默认是用当前页面的url去创建，当然很容易超出，因此找到theme文件夹里有的gitment.ejs或者有的是gitment.swig，在文件里增加一行<br><code>id: &lt;%= page.date %&gt;</code>,记得在最后加个逗号.</p>
+<p>我的gitment.ejs供参考:<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</span><br><span class="line">  id: <span class="string">'&lt;%= page.date %&gt;'</span>,</span><br><span class="line">  owner: <span class="string">'&lt;%= theme.gitment.owner %&gt;'</span>,</span><br><span class="line">  repo: <span class="string">'&lt;%= theme.gitment.repo %&gt;'</span>,</span><br><span class="line">  oauth: &#123;</span><br><span class="line">    client_id: <span class="string">'&lt;%= theme.gitment.client_id %&gt;'</span>,</span><br><span class="line">    client_secret: <span class="string">'&lt;%= theme.gitment.client_secret %&gt;'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div></p>
+<h4 id="5-Hexo搭建的博客文章中使用图片不显示"><a href="#5-Hexo搭建的博客文章中使用图片不显示" class="headerlink" title="5.Hexo搭建的博客文章中使用图片不显示"></a>5.Hexo搭建的博客文章中使用图片不显示</h4><p>解决方法<a href="https://blog.csdn.net/Mandyucan/article/details/80421711" target="_blank" rel="noopener">点这里</a></p>
+<p>使用案例<br><img src="/2019/05/10/使用Hexo搭建博客遇到的问题及解决/三叶.png" width="400" height="200" alt="三叶" align="center"></p>
 
       
     </div>
