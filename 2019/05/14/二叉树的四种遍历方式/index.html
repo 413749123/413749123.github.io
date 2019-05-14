@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>二叉树的四种遍历方式 | 飞萤乱入帘的小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="二叉树的四种遍历方式前言最近做题用到很多次二叉树的遍历，因此写这篇文章记录二叉树的四种遍历方式。  层次遍历：按照每一层的顺序进行遍历 前序遍历：根结点 —&amp;gt; 左子树 —&amp;gt; 右子树 中序遍历：左子树—&amp;gt; 根结点 —&amp;gt; 右子树 后序遍历：左子树 —&amp;gt; 右子树 —&amp;gt; 根结点  首先为了方便，先假设二叉树的结构如下:123456struct TreeNode &amp;#12">
+<meta name="keywords" content="二叉树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉树的四种遍历方式">
+<meta property="og:url" content="http://yoursite.com/2019/05/14/二叉树的四种遍历方式/index.html">
+<meta property="og:site_name" content="飞萤乱入帘的小站">
+<meta property="og:description" content="二叉树的四种遍历方式前言最近做题用到很多次二叉树的遍历，因此写这篇文章记录二叉树的四种遍历方式。  层次遍历：按照每一层的顺序进行遍历 前序遍历：根结点 —&amp;gt; 左子树 —&amp;gt; 右子树 中序遍历：左子树—&amp;gt; 根结点 —&amp;gt; 右子树 后序遍历：左子树 —&amp;gt; 右子树 —&amp;gt; 根结点  首先为了方便，先假设二叉树的结构如下:123456struct TreeNode &amp;#12">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-14T10:48:54.578Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="二叉树的四种遍历方式">
+<meta name="twitter:description" content="二叉树的四种遍历方式前言最近做题用到很多次二叉树的遍历，因此写这篇文章记录二叉树的四种遍历方式。  层次遍历：按照每一层的顺序进行遍历 前序遍历：根结点 —&amp;gt; 左子树 —&amp;gt; 右子树 中序遍历：左子树—&amp;gt; 根结点 —&amp;gt; 右子树 后序遍历：左子树 —&amp;gt; 右子树 —&amp;gt; 根结点  首先为了方便，先假设二叉树的结构如下:123456struct TreeNode &amp;#12">
+  
+    <link rel="alternate" href="/atom.xml" title="飞萤乱入帘的小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/icon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+  <script>
+  let antiquityStorage = window.sessionStorage.getItem('antiquitySessionStorage');
+  if (antiquityStorage == '' || antiquityStorage == null) {
+    var antiquityLoader = '<div id="loaderbox"><div class="loader"><div class="load-roll"><div class="load-top"></div><div class="load-right"></div><div class="load-bottom"></div></div></div></div>';
+    document.write(antiquityLoader);
+    document.body.style.overflow = 'hidden'
+  }
+  </script>
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" style="background-image: url(/images/bg2.jpg)" title="space">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-二叉树的四种遍历方式" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      二叉树的四种遍历方式
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/05/14/二叉树的四种遍历方式/" class="article-date">
+  <time datetime="2019-05-14T08:22:46.000Z" itemprop="datePublished">2019-05-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-mac" itemprop="articleBody">
+      
+        <h3 id="二叉树的四种遍历方式"><a href="#二叉树的四种遍历方式" class="headerlink" title="二叉树的四种遍历方式"></a>二叉树的四种遍历方式</h3><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>最近做题用到很多次二叉树的遍历，因此写这篇文章记录二叉树的四种遍历方式。</p>
+<ul>
+<li>层次遍历：按照每一层的顺序进行遍历</li>
+<li>前序遍历：根结点 —&gt; 左子树 —&gt; 右子树</li>
+<li>中序遍历：左子树—&gt; 根结点 —&gt; 右子树</li>
+<li>后序遍历：左子树 —&gt; 右子树 —&gt; 根结点</li>
+</ul>
+<p>首先为了方便，先假设二叉树的结构如下:<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" data-rel="CPP"><figure class="iseeu highlight /cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) : val(x), left(<span class="literal">NULL</span>), right(<span class="literal">NULL</span>) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div></p>
+<p>对于程序的输入为:<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">       3 //根节点root</span><br><span class="line">    /    \</span><br><span class="line">   9     20</span><br><span class="line"> /  \    /  \</span><br><span class="line">4   10  15   7</span><br></pre></td></tr></table></figure></div></p>
+<h4 id="1-二叉树的层次遍历"><a href="#1-二叉树的层次遍历" class="headerlink" title="1.二叉树的层次遍历"></a>1.二叉树的层次遍历</h4><p>层次遍历就是依次遍历树的每一层。借助队列，可以轻松实现。<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" data-rel="CPP"><figure class="iseeu highlight /cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">levelOrder</span><span class="params">(TreeNode *root)</span></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;TreeNode *&gt; q[<span class="number">2</span>];<span class="comment">//定义两个队列，轮流使用</span></span><br><span class="line">        TreeNode *p;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>,curUsed = <span class="number">0</span>;<span class="comment">//当前使用的队列下标</span></span><br><span class="line">        <span class="keyword">if</span>(root)<span class="comment">//如果为NULL</span></span><br><span class="line">            q[<span class="number">0</span>].push(root);</span><br><span class="line">        <span class="keyword">while</span>(!q[curUsed].empty())&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"第"</span>&lt;&lt;cnt+<span class="number">1</span>&lt;&lt;<span class="string">"层:"</span>;</span><br><span class="line">            <span class="keyword">while</span>(!q[curUsed].empty())&#123;</span><br><span class="line">                p = q[curUsed].front();</span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;p-&gt;val&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">                q[curUsed].pop();</span><br><span class="line">                <span class="keyword">if</span>(p-&gt;left) q[!curUsed].push(p-&gt;left);</span><br><span class="line">                <span class="keyword">if</span>(p-&gt;right) q[!curUsed].push(p-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            curUsed = !curUsed;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>输出:<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第1层:3</span><br><span class="line">第2层:9 20</span><br><span class="line">第3层:4 10 15 7</span><br></pre></td></tr></table></figure></div></p>
+<h4 id="2-二叉树的前序遍历"><a href="#2-二叉树的前序遍历" class="headerlink" title="2.二叉树的前序遍历"></a>2.二叉树的前序遍历</h4><ul>
+<li><p>递归遍历：根结点 —&gt; 左子树 —&gt; 右子树</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" data-rel="CPP"><figure class="iseeu highlight /cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(TreeNode * root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;root-&gt;val&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">        preOrder(root-&gt;left);</span><br><span class="line">        preOrder(root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>非递归遍历：通过栈来实现</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" data-rel="CPP"><figure class="iseeu highlight /cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(TreeNode * root)</span></span>&#123;</span><br><span class="line">   <span class="built_in">stack</span>&lt;TreeNode *&gt; s;<span class="comment">/**/</span></span><br><span class="line">   TreeNode *p = root;</span><br><span class="line">   <span class="keyword">while</span>(p || !s.empty())&#123;</span><br><span class="line">       <span class="keyword">while</span>(p)&#123;</span><br><span class="line">           <span class="built_in">cout</span>&lt;&lt;p-&gt;val&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">           s.push(p);<span class="comment">//入栈</span></span><br><span class="line">           p = p-&gt;left;<span class="comment">//一直往左</span></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(!s.empty())&#123;</span><br><span class="line">           p = s.top();</span><br><span class="line">           s.pop();<span class="comment">//出栈，左子树遍历完毕，遍历右子树</span></span><br><span class="line">           p = p-&gt;right;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>结果:<code>3 9 4 10 20 15 7</code></p>
+</li>
+</ul>
+<h4 id="3-二叉树的中序遍历"><a href="#3-二叉树的中序遍历" class="headerlink" title="3.二叉树的中序遍历"></a>3.二叉树的中序遍历</h4><ul>
+<li><p>递归遍历：左子树—&gt; 根结点 —&gt; 右子树</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" data-rel="CPP"><figure class="iseeu highlight /cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inorder</span><span class="params">(TreeNode *root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root)&#123;</span><br><span class="line">        inorder(root-&gt;left);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;root-&gt;val&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">        inorder(root-&gt;right);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>非递归遍历：同样通过栈来实现</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" data-rel="CPP"><figure class="iseeu highlight /cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inorder</span><span class="params">(TreeNode *root)</span></span>&#123;</span><br><span class="line">   <span class="built_in">stack</span>&lt;TreeNode *&gt; s;</span><br><span class="line">   TreeNode *p = root;</span><br><span class="line">   <span class="keyword">while</span>(p || !s.empty())&#123;</span><br><span class="line">       <span class="keyword">while</span>(p)&#123;</span><br><span class="line">           s.push(p);</span><br><span class="line">           p = p-&gt;left;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(!s.empty())&#123;</span><br><span class="line">           p = s.top();</span><br><span class="line">           <span class="built_in">cout</span>&lt;&lt;p-&gt;val&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">           s.pop();</span><br><span class="line">           p = p-&gt;right;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>结果：<code>4 9 10 3 15 20 7</code></p>
+</li>
+</ul>
+<h4 id="4-二叉树的后序遍历"><a href="#4-二叉树的后序遍历" class="headerlink" title="4.二叉树的后序遍历"></a>4.二叉树的后序遍历</h4><ul>
+<li><p>递归遍历：左子树 —&gt; 右子树 —&gt; 根结点</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" data-rel="CPP"><figure class="iseeu highlight /cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">postOrder</span><span class="params">(TreeNode * root)</span></span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(root)&#123;</span><br><span class="line">       postOrder(root-&gt;left);</span><br><span class="line">       postOrder(root-&gt;right);</span><br><span class="line">       <span class="built_in">cout</span>&lt;&lt;root-&gt;val&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>非递归遍历：后序遍历的非递归实现是最困难的。思路是跟先序和中序遍历一样，用一个Stack存储还未遍历右子树的节点。用一个last记住上次遍历的节点，如果上次访问的点是右孩子，说明右子树已经遍历过了。</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="false" data-rel="CPP"><figure class="iseeu highlight /cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">postOrder</span><span class="params">(TreeNode *root)</span></span>&#123;</span><br><span class="line">   <span class="built_in">stack</span>&lt;TreeNode*&gt; s;</span><br><span class="line">   TreeNode *node = root;<span class="comment">//当前结点</span></span><br><span class="line">   TreeNode *last=<span class="literal">NULL</span>;<span class="comment">//前一次訪问的结点</span></span><br><span class="line">   <span class="keyword">while</span> (node != <span class="literal">NULL</span> || !s.empty()) &#123;</span><br><span class="line">       <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">           s.push(node);</span><br><span class="line">           node = node-&gt;left;</span><br><span class="line">       &#125;</span><br><span class="line">       node = s.top();<span class="comment">//如果节点的右孩子为空，或者已经遍历过了，那就打印当前节点</span></span><br><span class="line">       <span class="keyword">if</span> (node-&gt;right == <span class="literal">NULL</span> || node-&gt;right == last) &#123;</span><br><span class="line">           <span class="built_in">cout</span>&lt;&lt;node-&gt;val&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">           s.pop();</span><br><span class="line">           last = node;</span><br><span class="line">           node = <span class="literal">NULL</span>;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           node = node-&gt;right;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>结果：<code>4 10 9 15 7 20 3</code></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2019/05/13/全排列的递归和非递归实现/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">全排列的递归和非递归实现</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+
+
+
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+
+<script>
+var gitment = new Gitment({
+  id: 'Tue May 14 2019 16:22:46 GMT+0800',
+  owner: '413749123',
+  repo: '413749123.github.io',
+  oauth: {
+    client_id: 'f9c1d776d68451e3da20',
+    client_secret: 'aab0254936c28dfe3620580be657f74659bb9ce2',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/icon.png" title="三叶">
+    <h3 class="avatar-name">
+      
+        飞萤乱入帘
+      
+    </h3>
+    <p class="avatar-slogan">
+      不要温顺地走进那个良夜。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/环境搭建/">环境搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/全排列/">全排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递推/">递推</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/05/14/二叉树的四种遍历方式/">二叉树的四种遍历方式</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/13/全排列的递归和非递归实现/">全排列的递归和非递归实现</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/10/使用Hexo搭建博客遇到的问题及解决/">使用Hexo搭建博客遇到的问题及解决</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target="_blank">一路烟霞</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 飞萤乱入帘 &nbsp;&nbsp;
+    <br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
